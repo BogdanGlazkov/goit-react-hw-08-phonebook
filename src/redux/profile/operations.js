@@ -4,9 +4,9 @@ import { selectAuth } from 'redux/auth/selectors';
 import { getUserService } from '../../services/usersApi';
 
 export const getProfileThunk = createAsyncThunk(
-  'users/current',
+  '/users/current',
   async (_, thunkAPI) => {
-    const auth = selectAuth();
+    const auth = selectAuth(thunkAPI.getState());
 
     try {
       if (!auth.token) {
@@ -14,9 +14,9 @@ export const getProfileThunk = createAsyncThunk(
       }
       token.set(auth.token);
       return await getUserService();
-    } catch (error) {
+    } catch {
       token.unset();
-      return thunkAPI.rejectWithValue(error.message);
+      return thunkAPI.rejectWithValue();
     }
   }
 );

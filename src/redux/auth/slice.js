@@ -3,7 +3,7 @@ import { getProfileThunk } from 'redux/profile/operations';
 import { loginThunk } from './operations';
 
 const authInitialState = {
-  token: '',
+  token: null,
   status: false,
 };
 
@@ -26,7 +26,7 @@ const authSlice = createSlice({
     },
     [getProfileThunk.rejected]: state => {
       state.status = false;
-      state.token = '';
+      state.token = null;
     },
   },
 });

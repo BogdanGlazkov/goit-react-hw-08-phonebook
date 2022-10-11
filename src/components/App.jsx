@@ -19,7 +19,7 @@ export const App = () => {
   const dispatch = useDispatch();
   const { token, status } = useSelector(selectAuth);
   
-  if (token !== '') {
+  if (!token) {
     tokenUrl.set(token);
   };
 

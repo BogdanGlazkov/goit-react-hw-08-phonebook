@@ -29,8 +29,8 @@ const Registration = () => {
 
     const onSubmit = e => {
         e.preventDefault();
-
         setIsLoading(true);
+        
         createUserService(user).then(() => {
             toast.success("Success");
             setIsLoading(false);

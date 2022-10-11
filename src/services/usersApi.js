@@ -13,21 +13,21 @@ export const token = {
     privateApi.defaults.headers.Authorization = value;
   },
 
-  unset: value => {
+  unset: () => {
     privateApi.defaults.headers.Authorization = null;
   },
 };
 
-export const createUserService = body => {
+export const createUserService = async body => {
   return publicApi.post('/users/signup', body);
 };
 
 export const loginUserService = async body => {
-  const { data } = await publicApi.post('users/login', body);
+  const { data } = await publicApi.post('/users/login', body);
   return data;
 };
 
 export const getUserService = async body => {
-  const { data } = await privateApi.get('users/current', body);
+  const { data } = await privateApi.get('/users/current', body);
   return data;
 };
