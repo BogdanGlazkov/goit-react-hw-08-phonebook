@@ -1,0 +1,42 @@
+.wrapper {
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+}
+
+.login{
+  margin-left: auto;
+}
+
+
+.item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  min-width: 70px;
+  padding: 10px 15px;
+  margin-right: 30px;
+
+  font-size: 14px;
+  color: rgb(0, 0, 0);
+  border-radius: 8px;
+  transition: all ease-in 150ms;
+
+  &:last-child{
+    margin-right: 0;
+
+  }
+
+  &:hover {
+    color: white;
+    background-color: rgb(0, 0, 0);
+    text-decoration: none;
+  }
+
+  &.active {
+    color: white;
+    background-color: rgb(0, 0, 0);
+    text-decoration: none;
+  }
+}

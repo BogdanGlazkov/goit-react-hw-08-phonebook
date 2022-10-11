@@ -1,21 +1,36 @@
-import { useSelector, shallowEqual, useDispatch } from 'react-redux';
-import { changeFilter } from 'redux/filter/filter.slice';
+import { useSelector, useDispatch } from 'react-redux';
+import { useSearchParams } from 'react-router-dom';
+import { selectContact } from 'redux/contacts/selectors';
+import { setFilter } from 'redux/contacts/slice';
 import s from './Filter.module.css';
 
-export const Filter = () => {
-    const filter = useSelector(state => state.filter, shallowEqual);
+export const FilterList = () => {
+    const [queryParams, setQueryParams] = useSearchParams();
+    const contacts = useSelector(selectContact);
     const dispatch = useDispatch();
+
+    const onFilterChange = e => {
+        const value = e.target.value.trim();
+
+        dispatch(setFilter(value));
+        setQueryParams(value === '' ? {} : { query: value });
+    };
+
+    if (contacts.length === 0) {
+        return;
+    };
 
     return (
         <label className='label'>
-            Find contacts by name
+            <span className={s.label}>Find contacts by name</span>
             <input
                 className={s.input}
-                onChange={e => dispatch(changeFilter(e.target.value))}
+                onChange={onFilterChange}
                 type="text"
-                value={filter}
+                value={queryParams.value}
+                name="filter"
                 placeholder="Start typing the name..."
-            ></input>
+            />
         </label>
-    )
+    );
 };

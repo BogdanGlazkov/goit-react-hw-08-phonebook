@@ -1,25 +1,29 @@
 import { useState } from 'react';
-import { useSelector, useDispatch, shallowEqual } from 'react-redux';
-import { addContact } from 'redux/operations';
-import {Button} from 'components/Button';
+import { useSelector, useDispatch} from 'react-redux';
+import { addContact } from 'redux/contacts/operations';
+import { toast } from 'react-toastify';
+import { selectContact } from 'redux/contacts/selectors';
+import Button from '@mui/material/Button';
 import s from './Form.module.css';
 
 export const Form = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
-  const contacts = useSelector(state => state.contacts.items, shallowEqual);
+  const contacts = useSelector(selectContact);
   const dispatch = useDispatch();
 
   const onInputChange = e => {
-    switch (e.target.name) {
+    const { name, value } = e.target;
+
+    switch (name) {
       case 'name':
-        setName(e.target.value);
+        setName(value);
         break;
       case 'number':
-        setNumber(e.target.value);
+        setNumber(value);
         break;
       default:
-        console.log(e.target.value + "is not a valid value");
+        console.log(value + "is not a valid value");
     }
   };
 
@@ -30,38 +34,39 @@ export const Form = () => {
 
   const onFormSubmit = e => {
     e.preventDefault();
-    const newContact = { name, number };
+    const hasUserContacts = contacts.some(user => user.name === name);
     
-    if (contacts.some(({ name }) => name === newContact.name)) {
-      alert(`${newContact.name} is already in contacts!`);
+    if (hasUserContacts) {
+      toast.warning(`${name} is already in contacts!`);
       return;
     };
-    dispatch(addContact(newContact));
+
+    dispatch(addContact({name, number}));
     formReset();
   };
 
   return (
     <form className={s.form} onSubmit={onFormSubmit}>
-      <label className={s.label}>
-        Name
+      <label>
+        <span className={s.label}>Name</span>
         <input
+          className={s.input}
           onChange={onInputChange}
           value={name}
-          className={s.input}
           type="text"
           name="name"
           pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-          placeholder="Jackie Chan"
+          placeholder="John Smith"
           required
         />
       </label>
-      <label className={s.label}>
-        Number
+      <label>
+        <span className={s.label}>Number</span>
         <input
+          className={s.input}
           onChange={onInputChange}
           value={number}
-          className={s.input}
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
@@ -70,7 +75,13 @@ export const Form = () => {
           required
         />
       </label>
-      <Button type="submit" sbtm>Add contact</Button>
+        <Button
+          disabled={name && number ? false : true}
+          variant="contained"
+          type="submit"
+        >
+          <span>Add contact</span>
+        </Button>
     </form>
   );
 };

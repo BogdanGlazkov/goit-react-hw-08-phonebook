@@ -1,26 +1,50 @@
-import { useSelector, shallowEqual } from "react-redux";
-import { ThreeDots } from 'react-loader-spinner';
-import { ContactsList } from "./Contacts-list/Contacts-list";
-import { Form } from "./Form";
-import { Filter } from "./Filter";
-import { Section } from './Section';
-import s from './Section/Section.module.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { lazy, useEffect } from "react";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { getProfileThunk } from "redux/profile/operations";
+import { selectAuth } from "redux/auth/selectors";
+import { token as tokenUrl } from "services/usersApi";
+import Layout from "./Layout";
+import LoginPage from '../pages/LoginPage';
+import Registration from '../pages/Registration';
+import PrivateRoute from "./PrivateRoute";
+import PublicRoute from "./PublicRoute";
+
+const HomePage = lazy(() => import('pages/HomePage'));
+const ContactPage = lazy(() => import('pages/ContactPage'));
 
 export const App = () => {
-  const isLoading = useSelector(state => state.contacts.isLoading, shallowEqual);
+  const dispatch = useDispatch();
+  const { token, status } = useSelector(selectAuth);
+  
+  if (token !== '') {
+    tokenUrl.set(token);
+  };
+
+  useEffect(() => {
+    if (status) {
+      dispatch(getProfileThunk());
+    };
+  }, [dispatch, status]);
 
   return (
-    <div>
-      <h1>Phonebook</h1>
-      <Section>
-        <Form />
-      </Section>
-      <Section>
-        <h2>Contacts</h2>
-        {isLoading && <ThreeDots wrapperClassName={s.loader} width="100" /> }
-            <Filter />
-            <ContactsList />
-      </Section>
-    </div>
+    <BrowserRouter basename="/goit-react-hw-08-phonebook">
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="/" element={<PrivateRoute />}>
+            <Route path="/contacts" element={<ContactPage />} />
+          </Route>
+          <Route path="/" element={<PublicRoute />}>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/registration" element={<Registration />} />
+          </Route>
+        </Route>
+          <Route path="*" element={<Layout />} />
+      </Routes>
+      <ToastContainer />
+    </BrowserRouter>
   );
 };
