@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import { Button } from "@mui/material";
 import { loginThunk } from "redux/auth/operations";
 import s from './LoginPage.module.css';
 
@@ -31,7 +30,7 @@ const LoginPage = () => {
     };
 
     return (
-        <div className={s.wrapper}>
+        <main className={s.wrapper}>
             <form className={s.form} onSubmit={onSubmit}>
                 <label>
                     <span className={s.label}>Email</span>
@@ -42,11 +41,11 @@ const LoginPage = () => {
                     <input className={s.input} type="password" name="password" value={user.password} required placeholder="********" onChange={onChangeUser} />
                 </label>
                 <Link className={s.link} to="/registration">Don't have account?</Link>
-                <Button disabled={!user.email || !user.password} variant="contained" type="submit">
+                <button className={s.btn} disabled={!user.email || !user.password} type="submit">
                     <span>Log In</span>
-                </Button>
+                </button>
             </form>
-        </div>
+        </main>
     );
 };
 

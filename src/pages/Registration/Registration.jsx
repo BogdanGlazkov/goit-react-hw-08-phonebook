@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { omit } from "lodash";
 import { toast } from "react-toastify";
-import { Button } from "@mui/material";
 import { createUserService } from "services/usersApi";
 import { loginThunk } from "redux/auth/operations";
 import Loader from "components/Loader";
@@ -41,7 +40,7 @@ const Registration = () => {
     };
 
     return (
-        <div className={s.wrapper}>
+        <main className={s.wrapper}>
             {isLoading && <Loader />}
             <form className={s.form} onSubmit={onSubmit}>
                 <label>
@@ -66,11 +65,11 @@ const Registration = () => {
                     <input className={s.input} type="password" name="password" value={user.password} minLength="7" required placeholder="********" onChange={onChangeUser} />
                 </label>
                 <Link className={s.link} to="/login">Already have account?</Link>
-                <Button disabled={!user.name || !user.email || !user.password } variant="contained" type="submit">
+                <button className={s.btn} disabled={!user.name || !user.email || !user.password } type="submit">
                     <span>Registration</span>
-                </Button>
+                </button>
             </form>
-        </div>
+        </main>
     );
 };
 

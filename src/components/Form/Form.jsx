@@ -75,7 +75,8 @@ export const Form = () => {
           required
         />
       </label>
-        <Button
+      <Button
+          className={s.btn}
           disabled={name && number ? false : true}
           variant="contained"
           type="submit"

@@ -18,7 +18,7 @@ const UserMenu = () => {
     return (
         <div style={{ display: 'flex', alignItems: 'center' }}>
             <UserProfile />
-            <Button type="button" variant="contained" color="error" onClick={onLogOut}>
+            <Button type="button" variant="contained" color="inherit" onClick={onLogOut}>
                 <span>Log Out</span>
             </Button>
         </div>

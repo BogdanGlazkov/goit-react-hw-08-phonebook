@@ -10,12 +10,10 @@ const Login = () => {
   return (
     <>
       <div className={s.wrapper}>
-        <div className={s.home}>
           <NavLink end className={getActiveClassName} to="/">
             <HomeIcon sx={{ mr: 0.5 }} fontSize="inherit" />
-            HOME
+            Home
           </NavLink>
-        </div>
 
         <div className={s.login}>
           <NavLink to="/login" className={getActiveClassName}>

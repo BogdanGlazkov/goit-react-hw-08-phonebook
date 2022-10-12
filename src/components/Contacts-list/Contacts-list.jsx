@@ -27,13 +27,14 @@ export const ContactsList = () => {
     };
   }, [dispatch, status]);
 
-  const elements = filteredContacts.map(({ id, name, phone }) => (
+  const elements = filteredContacts.map(({ id, name, number }) => (
     <li className={s.item} key={id}>
       <p className={s.text}>
         <ContactPhoneIcon sx={{ fontSize: 20, marginRight: 1 }} />
-        {name} <span className={s.tel}>Tel: {phone}</span>
-      </p>
+        {name}</p>
+      <p className={s.tel}>Tel: {number}</p>
       <Button
+        className={s.btn}
         variant='contained'
         startIcon={<DeleteIcon />}
         type="button"
@@ -53,7 +54,7 @@ ContactsList.propTypes = {
   contacts: PropTypes.arrayOf(
     PropTypes.shape({
       userName: PropTypes.string.isRequired,
-      phone: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
     })
   ),
