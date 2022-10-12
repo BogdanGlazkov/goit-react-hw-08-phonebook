@@ -8,10 +8,10 @@
 .text {
     display: flex;
     align-items: center;
+    margin: 4px 0;
 }
 
 .img {
     display: block;
-    width: 800px;
-    height: 100%;
+    width: 100%;
 }

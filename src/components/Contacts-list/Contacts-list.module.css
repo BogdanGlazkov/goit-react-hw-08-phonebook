@@ -20,33 +20,32 @@
     align-items: center;
 }
 
+.item:hover {
+    text-decoration: underline;
+}
+
 .text {
     display: flex;
     align-items: center;
-    font-size: 22px;
-    font-weight: 500;
-    margin-right: 30px;
+    width: 40%;
+    font-size: 20px;
 }
 
 .tel {
     display: inline-block;
-    font-size: 12px;
-    font-weight: 400;
-    margin-left: 40px;
+    width: 30%;
+    font-size: 16px;
+    text-align: left;
 }
 
 .btn {
-    display: inline-block;
-    min-width: 50px;
-    height: 40px;
-
-    padding: 0 5px;
-
+    margin: 10px 0;
+    padding: 5px;
     border: 1px solid black;
     border-radius: 5px;
 
     color: black;
-    background-color: transparent;
+    background-color: var(--primary-bg-color);
 
     cursor: pointer;
     transition: all ease-in 250ms;
@@ -55,5 +54,5 @@
 .btn:hover {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     color: white;
-    background-color: black;
+    background-color: var(--accent-color);
 }

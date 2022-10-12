@@ -1,53 +1,59 @@
 .form {
-    box-sizing: border-box;
+  box-sizing: border-box;
 
-    max-width: 500px;
-    width: 100%;
-    padding: 20px;
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
 
-    border: 1px solid grey;
-    border-radius: 5px;
+  border: 1px solid grey;
+  border-radius: 5px;
 
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .label {
-    display: inline-block;
-    font-size: 24px;
+  display: inline-block;
+  font-size: 24px;
 
-    font-weight: 500;
-    margin-bottom: 10px;
+  font-weight: 500;
+  margin-bottom: 10px;
 }
 
 .input {
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
 
-    border: 1px solid black;
-    border-radius: 5px;
+  outline: 1px solid var(--accent-color);
+  border: none;
+  border-radius: 5px;
 
-    padding: 8px;
-    margin-bottom: 20px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.input:hover,
+.input:focus {
+  outline: 2px solid var(--accent-color);
 }
 
 .btn {
-    min-width: 100px;
+  min-width: 120px;
+  height: 40px;
+  padding: 5px 10px;
 
-    padding: 5px 10px;
+  border: 1px solid var(--accent-color);
+  border-radius: 5px;
 
-    border: 1px solid black;
-    border-radius: 5px;
+  color: var(--primary-text-color);
+  background-color: var(--bg-color);
 
-    color: black;
-    background-color: transparent;
-
-    cursor: pointer;
-    transition: all ease-in 250ms;
+  cursor: pointer;
+  transition: all var(--transition);
 }
 
 .btn:hover {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    color: white;
-    background-color: black;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  color: var(--bg-color);
+  background-color: var(--accent-color);
 }

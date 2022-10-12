@@ -1,11 +1,17 @@
 .wrapper {
   max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-.login {
-  margin-left: auto;
+.link {
+  display: flex;
+  align-items: center;
 }
 
 .item {

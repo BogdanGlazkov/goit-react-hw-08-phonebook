@@ -10,11 +10,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
     --primary-bg-color: lightgreen;
-    --accent-color: darkgreen;
+    --accent-color: rgb(10, 80, 41);
     --primary-text-color: black;
     --secondary-text-color: gray;
-    --btn-color: whitesmoke;
-    background-color: var(--btn-color);
+    --bg-color: whitesmoke;
+    background-color: var(--bg-color);
 
     --transition: 300ms ease-in-out;
   }
@@ -48,21 +48,4 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
-}
-
-h1 {
-  text-align: center;
-}
-
-h2 {
-  padding-bottom: 20px;
-  text-decoration: underline;
-  font-size: 25px;
-}
-button {
-  cursor: pointer;
-}
-
-button, input {
-  border-radius: 2px;
 }
