@@ -9,15 +9,15 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-    --primary-bg-color: lightgreen;
-    --accent-color: rgb(10, 80, 41);
-    --primary-text-color: black;
-    --secondary-text-color: gray;
-    --bg-color: whitesmoke;
-    background-color: var(--bg-color);
+  --primary-bg-color: lightgreen;
+  --accent-color: rgb(10, 80, 41);
+  --primary-text-color: black;
+  --secondary-text-color: gray;
+  --bg-color: rgb(233, 239, 241);
+  background-color: var(--bg-color);
 
-    --transition: 300ms ease-in-out;
-  }
+  --transition: 300ms ease-in-out;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

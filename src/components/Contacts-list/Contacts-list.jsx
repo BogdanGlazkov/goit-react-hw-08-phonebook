@@ -7,6 +7,7 @@ import { selectAuth } from 'redux/auth/selectors';
 import Button from '@mui/material/Button';
 import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { login } from 'components/Confetti/utils';
 import s from './Contacts-list.module.css';
 
 export const ContactsList = () => {
@@ -26,6 +27,10 @@ export const ContactsList = () => {
       dispatch(fetchContacts());
     };
   }, [dispatch, status]);
+
+  useEffect(() => {
+    login.submit();
+  }, [contacts]);
 
   const elements = filteredContacts.map(({ id, name, number }) => (
     <li className={s.item} key={id}>
@@ -60,4 +65,3 @@ ContactsList.propTypes = {
   ),
   onDelete: PropTypes.func,
 };
-

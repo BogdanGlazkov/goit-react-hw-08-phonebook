@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginThunk } from "redux/auth/operations";
 import s from './LoginPage.module.css';
 
 const LoginPage = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const initialValue = {
         email: '',
         password: '',
@@ -24,6 +25,7 @@ const LoginPage = () => {
         try {
             await dispatch(loginThunk(user)).unwrap();
             setUser(initialValue);
+            navigate('/contacts', { replace: true });
         } catch (error) {
             toast.error('Please try again');
         }
