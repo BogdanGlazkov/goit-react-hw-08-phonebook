@@ -5,8 +5,8 @@ import { fetchContacts, deleteContact } from 'redux/contacts/operations';
 import { selectContact } from 'redux/contacts/selectors';
 import { selectAuth } from 'redux/auth/selectors';
 import Button from '@mui/material/Button';
-import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
-import DeleteIcon from '@mui/icons-material/Delete';
+import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
+import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 import { login } from 'components/Confetti/utils';
 import s from './Contacts-list.module.css';
 
@@ -35,15 +35,15 @@ export const ContactsList = () => {
   const elements = filteredContacts.map(({ id, name, number }) => (
     <li className={s.item} key={id}>
       <p className={s.text}>
-        <ContactPhoneIcon sx={{ fontSize: 20, marginRight: 1 }} />
+        <PhoneAndroidIcon sx={{ fontSize: 20, marginRight: 1 }} />
         {name}</p>
       <p className={s.tel}>Tel: {number}</p>
       <Button
         className={s.btn}
         variant='contained'
-        startIcon={<DeleteIcon />}
+        startIcon={<DeleteForeverOutlinedIcon />}
         type="button"
-        onClick={() => dispatch(deleteContact(id))}
+        onClick={() => window.confirm(`Delete contact ${name}?`) && dispatch(deleteContact(id))}
       >
         Delete
       </Button>
@@ -56,12 +56,11 @@ export const ContactsList = () => {
 };
 
 ContactsList.propTypes = {
-  contacts: PropTypes.arrayOf(
+  filteredContacts: PropTypes.arrayOf(
     PropTypes.shape({
-      userName: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
       number: PropTypes.string.isRequired,
       id: PropTypes.number.isRequired,
     })
   ),
-  onDelete: PropTypes.func,
 };
