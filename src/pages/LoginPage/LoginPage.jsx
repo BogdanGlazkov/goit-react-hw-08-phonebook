@@ -27,7 +27,7 @@ const LoginPage = () => {
             setUser(initialValue);
             navigate('/contacts', { replace: true });
         } catch (error) {
-            toast.error('Please try again');
+            toast.error('Wrong email or password');
         }
     };
 
@@ -42,8 +42,8 @@ const LoginPage = () => {
                     <span className={s.label}>Password</span>
                     <input className={s.input} type="password" name="password" value={user.password} required placeholder="********" onChange={onChangeUser} />
                 </label>
-                <Link className={s.link} to="/registration">Don't have account?</Link>
-                <button className={s.btn} disabled={!user.email || !user.password} type="submit">
+                <Link className={s.link} to="/register">Don't have account?</Link>
+                <button className={s.btn} type="submit">
                     <span>Log In</span>
                 </button>
             </form>
