@@ -60,7 +60,7 @@
   background-color: var(--accent-color);
 }
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 480px) {
   .item {
     flex-direction: column;
     justify-content: center;

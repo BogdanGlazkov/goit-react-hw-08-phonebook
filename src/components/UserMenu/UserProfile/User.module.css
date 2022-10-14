@@ -42,3 +42,11 @@
   background-color: var(--accent-color);
   text-decoration: none;
 }
+
+@media screen and (max-width: 767px) {
+  .wrapper {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0;
+  }
+}
