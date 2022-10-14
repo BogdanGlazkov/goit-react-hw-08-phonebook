@@ -38,8 +38,7 @@ export const ContactsList = () => {
         <PhoneAndroidIcon sx={{ fontSize: 20, marginRight: 1 }} />
         {name}</p>
       <p className={s.tel}>Tel: {number}</p>
-      <Button
-        className={s.btn}
+      <Button color='inherit'
         variant='contained'
         startIcon={<DeleteForeverOutlinedIcon />}
         type="button"

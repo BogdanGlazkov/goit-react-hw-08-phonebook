@@ -39,27 +39,6 @@
   text-align: left;
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid black;
-  border-radius: 5px;
-
-  color: black;
-  background-color: var(--primary-bg-color);
-
-  cursor: pointer;
-  transition: all ease-in 250ms;
-}
-
-.btn:hover {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  color: white;
-  background-color: var(--accent-color);
-}
-
 @media screen and (max-width: 480px) {
   .item {
     flex-direction: column;

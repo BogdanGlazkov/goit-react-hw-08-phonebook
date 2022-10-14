@@ -3,7 +3,6 @@ import { useSelector, useDispatch} from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
 import { toast } from 'react-toastify';
 import { selectContact } from 'redux/contacts/selectors';
-import Button from '@mui/material/Button';
 import s from './Form.module.css';
 
 export const Form = () => {
@@ -75,14 +74,9 @@ export const Form = () => {
           required
         />
       </label>
-      <Button
-          className={s.btn}
-          disabled={!name || !number}
-          variant="contained"
-          type="submit"
-        >
+      <button className={s.btn} type="submit">
           <span>Save</span>
-        </Button>
+        </button>
     </form>
   );
 };
