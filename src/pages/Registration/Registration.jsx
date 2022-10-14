@@ -65,8 +65,8 @@ const Registration = () => {
                     <input className={s.input} type="password" name="password" value={user.password} minLength="7" required placeholder="********" onChange={onChangeUser} />
                 </label>
                 <Link className={s.link} to="/login">Already have account?</Link>
-                <button className={s.btn} disabled={!user.name || !user.email || !user.password } type="submit">
-                    <span>Registration</span>
+                <button className={s.btn} type="submit">
+                    <span>Register</span>
                 </button>
             </form>
         </main>

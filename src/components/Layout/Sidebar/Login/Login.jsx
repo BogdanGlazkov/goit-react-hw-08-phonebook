@@ -19,7 +19,7 @@ const Login = () => {
           <NavLink to="/login" className={getActiveClassName}>
             Login
           </NavLink>
-          <NavLink to="/registration" className={getActiveClassName}>
+          <NavLink to="/register" className={getActiveClassName}>
             Registration
           </NavLink>
         </div>

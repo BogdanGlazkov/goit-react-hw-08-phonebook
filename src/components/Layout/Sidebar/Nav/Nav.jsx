@@ -4,7 +4,7 @@ import CallSharpIcon from '@mui/icons-material/CallSharp';
 import s from '../Nav/Nav.module.css';
 import UserMenu from 'components/UserMenu';
 
-const Nav = () => {
+const Navigation = () => {
   const getActiveClassName = ({ isActive }) => {
     return isActive ? `${s.item} ${s.active}` : s.item;
   };
@@ -30,4 +30,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default Navigation;

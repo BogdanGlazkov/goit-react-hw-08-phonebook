@@ -25,7 +25,10 @@
 
   font-size: 16px;
   color: var(--primary-text-color);
+  background-color: transparent;
+  border: none;
   border-radius: 8px;
+  outline: 1px solid var(--accent-color);
   transition: all var(--transition);
 }
 

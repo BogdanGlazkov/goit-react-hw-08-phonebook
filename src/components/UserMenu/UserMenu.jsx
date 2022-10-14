@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Button } from "@mui/material";
 import { token } from "services/usersApi";
 import { logoutAction } from "redux/auth/slice";
 import UserProfile from "./UserProfile";
+import s from './UserProfile/User.module.css'
 
 const UserMenu = () => {
     const dispatch = useDispatch();
@@ -16,11 +16,11 @@ const UserMenu = () => {
     };
 
     return (
-        <div style={{ display: 'flex', alignItems: 'center' }}>
+        <div className={s.wrapper}>
             <UserProfile />
-            <Button type="button" variant="contained" color="inherit" onClick={onLogOut}>
-                <span>Log Out</span>
-            </Button>
+            <button className={s.btn} type="button" onClick={onLogOut}>
+                <span>Logout</span>
+            </button>
         </div>
     );
 };
